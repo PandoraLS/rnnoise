@@ -13,18 +13,20 @@
 /** RNNoise wrapper for malloc(). To do your own dynamic allocation, all you need t
 o do is replace this function and rnnoise_free */
 #ifndef OVERRIDE_RNNOISE_ALLOC
-static RNN_INLINE void *rnnoise_alloc (size_t size)
-{
-   return malloc(size);
+
+static RNN_INLINE void *rnnoise_alloc(size_t size) {
+    return malloc(size);
 }
+
 #endif
 
 /** RNNoise wrapper for free(). To do your own dynamic allocation, all you need to do is replace this function and rnnoise_alloc */
 #ifndef OVERRIDE_RNNOISE_FREE
-static RNN_INLINE void rnnoise_free (void *ptr)
-{
-   free(ptr);
+
+static RNN_INLINE void rnnoise_free(void *ptr) {
+    free(ptr);
 }
+
 #endif
 
 /** Copy n elements from src to dst. The 0* term provides compile-time type checking  */
@@ -42,7 +44,6 @@ static RNN_INLINE void rnnoise_free (void *ptr)
 #ifndef OVERRIDE_RNN_CLEAR
 #define RNN_CLEAR(dst, n) (memset((dst), 0, (n)*sizeof(*(dst))))
 #endif
-
 
 
 #endif

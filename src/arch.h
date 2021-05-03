@@ -38,8 +38,8 @@
 #include "common.h"
 
 # if !defined(__GNUC_PREREQ)
-#  if defined(__GNUC__)&&defined(__GNUC_MINOR__)
-#   define __GNUC_PREREQ(_maj,_min) \
+#  if defined(__GNUC__) && defined(__GNUC_MINOR__)
+#   define __GNUC_PREREQ(_maj, _min) \
  ((__GNUC__<<16)+__GNUC_MINOR__>=((_maj)<<16)+(_min))
 #  else
 #   define __GNUC_PREREQ(_maj,_min) 0
@@ -67,16 +67,16 @@ static OPUS_INLINE void _celt_fatal(const char *str, const char *file, int line)
 #define celt_assert2(cond, message)
 #endif
 
-#define IMUL32(a,b) ((a)*(b))
+#define IMUL32(a, b) ((a)*(b))
 
-#define MIN16(a,b) ((a) < (b) ? (a) : (b))   /**< Minimum 16-bit value.   */
-#define MAX16(a,b) ((a) > (b) ? (a) : (b))   /**< Maximum 16-bit value.   */
-#define MIN32(a,b) ((a) < (b) ? (a) : (b))   /**< Minimum 32-bit value.   */
-#define MAX32(a,b) ((a) > (b) ? (a) : (b))   /**< Maximum 32-bit value.   */
-#define IMIN(a,b) ((a) < (b) ? (a) : (b))   /**< Minimum int value.   */
-#define IMAX(a,b) ((a) > (b) ? (a) : (b))   /**< Maximum int value.   */
-#define UADD32(a,b) ((a)+(b))
-#define USUB32(a,b) ((a)-(b))
+#define MIN16(a, b) ((a) < (b) ? (a) : (b))   /**< Minimum 16-bit value.   */
+#define MAX16(a, b) ((a) > (b) ? (a) : (b))   /**< Maximum 16-bit value.   */
+#define MIN32(a, b) ((a) < (b) ? (a) : (b))   /**< Minimum 32-bit value.   */
+#define MAX32(a, b) ((a) > (b) ? (a) : (b))   /**< Maximum 32-bit value.   */
+#define IMIN(a, b) ((a) < (b) ? (a) : (b))   /**< Minimum int value.   */
+#define IMAX(a, b) ((a) > (b) ? (a) : (b))   /**< Maximum int value.   */
+#define UADD32(a, b) ((a)+(b))
+#define USUB32(a, b) ((a)-(b))
 
 /* Set this if opus_int64 is a native type of the CPU. */
 /* Assume that all LP64 architectures have fast 64-bit types; also x86_64
@@ -186,62 +186,62 @@ static OPUS_INLINE int celt_isnan(float x)
 #define ABS16(x) ((float)fabs(x))
 #define ABS32(x) ((float)fabs(x))
 
-#define QCONST16(x,bits) (x)
-#define QCONST32(x,bits) (x)
+#define QCONST16(x, bits) (x)
+#define QCONST32(x, bits) (x)
 
 #define NEG16(x) (-(x))
 #define NEG32(x) (-(x))
 #define NEG32_ovflw(x) (-(x))
 #define EXTRACT16(x) (x)
 #define EXTEND32(x) (x)
-#define SHR16(a,shift) (a)
-#define SHL16(a,shift) (a)
-#define SHR32(a,shift) (a)
-#define SHL32(a,shift) (a)
-#define PSHR32(a,shift) (a)
-#define VSHR32(a,shift) (a)
+#define SHR16(a, shift) (a)
+#define SHL16(a, shift) (a)
+#define SHR32(a, shift) (a)
+#define SHL32(a, shift) (a)
+#define PSHR32(a, shift) (a)
+#define VSHR32(a, shift) (a)
 
-#define PSHR(a,shift)   (a)
-#define SHR(a,shift)    (a)
-#define SHL(a,shift)    (a)
-#define SATURATE(x,a)   (x)
+#define PSHR(a, shift)   (a)
+#define SHR(a, shift)    (a)
+#define SHL(a, shift)    (a)
+#define SATURATE(x, a)   (x)
 #define SATURATE16(x)   (x)
 
-#define ROUND16(a,shift)  (a)
-#define SROUND16(a,shift) (a)
+#define ROUND16(a, shift)  (a)
+#define SROUND16(a, shift) (a)
 #define HALF16(x)       (.5f*(x))
 #define HALF32(x)       (.5f*(x))
 
-#define ADD16(a,b) ((a)+(b))
-#define SUB16(a,b) ((a)-(b))
-#define ADD32(a,b) ((a)+(b))
-#define SUB32(a,b) ((a)-(b))
-#define ADD32_ovflw(a,b) ((a)+(b))
-#define SUB32_ovflw(a,b) ((a)-(b))
-#define MULT16_16_16(a,b)     ((a)*(b))
-#define MULT16_16(a,b)     ((opus_val32)(a)*(opus_val32)(b))
-#define MAC16_16(c,a,b)     ((c)+(opus_val32)(a)*(opus_val32)(b))
+#define ADD16(a, b) ((a)+(b))
+#define SUB16(a, b) ((a)-(b))
+#define ADD32(a, b) ((a)+(b))
+#define SUB32(a, b) ((a)-(b))
+#define ADD32_ovflw(a, b) ((a)+(b))
+#define SUB32_ovflw(a, b) ((a)-(b))
+#define MULT16_16_16(a, b)     ((a)*(b))
+#define MULT16_16(a, b)     ((opus_val32)(a)*(opus_val32)(b))
+#define MAC16_16(c, a, b)     ((c)+(opus_val32)(a)*(opus_val32)(b))
 
-#define MULT16_32_Q15(a,b)     ((a)*(b))
-#define MULT16_32_Q16(a,b)     ((a)*(b))
+#define MULT16_32_Q15(a, b)     ((a)*(b))
+#define MULT16_32_Q16(a, b)     ((a)*(b))
 
-#define MULT32_32_Q31(a,b)     ((a)*(b))
+#define MULT32_32_Q31(a, b)     ((a)*(b))
 
-#define MAC16_32_Q15(c,a,b)     ((c)+(a)*(b))
-#define MAC16_32_Q16(c,a,b)     ((c)+(a)*(b))
+#define MAC16_32_Q15(c, a, b)     ((c)+(a)*(b))
+#define MAC16_32_Q16(c, a, b)     ((c)+(a)*(b))
 
-#define MULT16_16_Q11_32(a,b)     ((a)*(b))
-#define MULT16_16_Q11(a,b)     ((a)*(b))
-#define MULT16_16_Q13(a,b)     ((a)*(b))
-#define MULT16_16_Q14(a,b)     ((a)*(b))
-#define MULT16_16_Q15(a,b)     ((a)*(b))
-#define MULT16_16_P15(a,b)     ((a)*(b))
-#define MULT16_16_P13(a,b)     ((a)*(b))
-#define MULT16_16_P14(a,b)     ((a)*(b))
-#define MULT16_32_P16(a,b)     ((a)*(b))
+#define MULT16_16_Q11_32(a, b)     ((a)*(b))
+#define MULT16_16_Q11(a, b)     ((a)*(b))
+#define MULT16_16_Q13(a, b)     ((a)*(b))
+#define MULT16_16_Q14(a, b)     ((a)*(b))
+#define MULT16_16_Q15(a, b)     ((a)*(b))
+#define MULT16_16_P15(a, b)     ((a)*(b))
+#define MULT16_16_P13(a, b)     ((a)*(b))
+#define MULT16_16_P14(a, b)     ((a)*(b))
+#define MULT16_32_P16(a, b)     ((a)*(b))
 
-#define DIV32_16(a,b)     (((opus_val32)(a))/(opus_val16)(b))
-#define DIV32(a,b)     (((opus_val32)(a))/(opus_val32)(b))
+#define DIV32_16(a, b)     (((opus_val32)(a))/(opus_val16)(b))
+#define DIV32(a, b)     (((opus_val32)(a))/(opus_val32)(b))
 
 #define SCALEIN(a)      ((a)*CELT_SIG_SCALE)
 #define SCALEOUT(a)     ((a)*(1/CELT_SIG_SCALE))

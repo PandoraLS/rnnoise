@@ -34,6 +34,7 @@
 #include "arch.h"
 
 #include <stdlib.h>
+
 #define opus_alloc(x) malloc(x)
 #define opus_free(x) free(x)
 
@@ -68,12 +69,12 @@ extern "C" {
 typedef struct {
     kiss_fft_scalar r;
     kiss_fft_scalar i;
-}kiss_fft_cpx;
+} kiss_fft_cpx;
 
 typedef struct {
-   kiss_twiddle_scalar r;
-   kiss_twiddle_scalar i;
-}kiss_twiddle_cpx;
+    kiss_twiddle_scalar r;
+    kiss_twiddle_scalar i;
+} kiss_twiddle_cpx;
 
 #define MAXFACTORS 8
 /* e.g. an fft of length 128 has 4 factors
@@ -81,19 +82,19 @@ typedef struct {
  4*4*4*2
  */
 
-typedef struct arch_fft_state{
-   int is_supported;
-   void *priv;
+typedef struct arch_fft_state {
+    int is_supported;
+    void *priv;
 } arch_fft_state;
 
-typedef struct kiss_fft_state{
+typedef struct kiss_fft_state {
     int nfft;
     opus_val16 scale;
 #ifdef FIXED_POINT
     int scale_shift;
 #endif
     int shift;
-    opus_int16 factors[2*MAXFACTORS];
+    opus_int16 factors[2 * MAXFACTORS];
     const opus_int16 *bitrev;
     const kiss_twiddle_cpx *twiddles;
     arch_fft_state *arch_fft;
@@ -128,9 +129,9 @@ typedef struct kiss_fft_state{
  *      buffer size in *lenmem.
  * */
 
-kiss_fft_state *opus_fft_alloc_twiddles(int nfft,void * mem,size_t * lenmem, const kiss_fft_state *base, int arch);
+kiss_fft_state *opus_fft_alloc_twiddles(int nfft, void *mem, size_t *lenmem, const kiss_fft_state *base, int arch);
 
-kiss_fft_state *opus_fft_alloc(int nfft,void * mem,size_t * lenmem, int arch);
+kiss_fft_state *opus_fft_alloc(int nfft, void *mem, size_t *lenmem, int arch);
 
 /**
  * opus_fft(cfg,in_out_buf)
@@ -142,16 +143,19 @@ kiss_fft_state *opus_fft_alloc(int nfft,void * mem,size_t * lenmem, int arch);
  * Note that each element is complex and can be accessed like
     f[k].r and f[k].i
  * */
-void opus_fft_c(const kiss_fft_state *cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
-void opus_ifft_c(const kiss_fft_state *cfg,const kiss_fft_cpx *fin,kiss_fft_cpx *fout);
+void opus_fft_c(const kiss_fft_state *cfg, const kiss_fft_cpx *fin, kiss_fft_cpx *fout);
 
-void opus_fft_impl(const kiss_fft_state *st,kiss_fft_cpx *fout);
-void opus_ifft_impl(const kiss_fft_state *st,kiss_fft_cpx *fout);
+void opus_ifft_c(const kiss_fft_state *cfg, const kiss_fft_cpx *fin, kiss_fft_cpx *fout);
+
+void opus_fft_impl(const kiss_fft_state *st, kiss_fft_cpx *fout);
+
+void opus_ifft_impl(const kiss_fft_state *st, kiss_fft_cpx *fout);
 
 void opus_fft_free(const kiss_fft_state *cfg, int arch);
 
 
 void opus_fft_free_arch_c(kiss_fft_state *st);
+
 int opus_fft_alloc_arch_c(kiss_fft_state *st);
 
 #if !defined(OVERRIDE_OPUS_FFT)
