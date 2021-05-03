@@ -42,8 +42,7 @@
 #define F_ACTIVATION_SIGMOID    1
 #define F_ACTIVATION_RELU       2
 
-RNNModel *rnnoise_model_from_file(FILE *f)
-{
+RNNModel *rnnoise_model_from_file(FILE *f) {
     int i, in;
 
     if (fscanf(f, "rnnoise-nu model file version %d\n", &in) != 1 || in != 1)
@@ -137,8 +136,7 @@ RNNModel *rnnoise_model_from_file(FILE *f)
     return ret;
 }
 
-void rnnoise_model_free(RNNModel *model)
-{
+void rnnoise_model_free(RNNModel *model) {
 #define FREE_MAYBE(ptr) do { if (ptr) free(ptr); } while (0)
 #define FREE_DENSE(name) do { \
     if (model->name) { \
