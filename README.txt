@@ -19,3 +19,8 @@ The output is also a 16-bit raw PCM file.
 The latest version of the source is available from
 https://gitlab.xiph.org/xiph/rnnoise .  The github repository
 is a convenience copy.
+
+
+# debug parameters (clion IDE)
+C:\Education\code\rnnoise\19-198-0002_db20_babble.pcm C:\Education\code\rnniose\19-198-0002_db20_babble_denoise.pcm
+
