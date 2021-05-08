@@ -447,7 +447,13 @@ void pitch_filter(kiss_fft_cpx *X, const kiss_fft_cpx *P, const float *Ex, const
         X[i].i *= normf[i];
     }
 }
-
+/*!
+ *
+ * @param st
+ * @param out 输出帧
+ * @param in 输入帧
+ * @return
+ */
 float rnnoise_process_frame(DenoiseState *st, float *out, const float *in) {
     int i;
     kiss_fft_cpx X[FREQ_SIZE];
