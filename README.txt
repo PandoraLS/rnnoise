@@ -22,5 +22,5 @@ is a convenience copy.
 
 
 # debug parameters (clion IDE)
-C:\Education\code\rnnoise\19-198-0002_db20_babble.pcm C:\Education\code\rnniose\19-198-0002_db20_babble_denoise.pcm
+D:\code\rnnoise\pcmfiles\19-198-0002_db20_babble.pcm D:\code\rnnoise\pcmfiles\19-198-0002_db20_babble_denoise.pcm
 
